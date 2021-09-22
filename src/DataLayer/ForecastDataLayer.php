@@ -17,7 +17,7 @@ class ForecastDataLayer
              die("Connection failed: " . $conn->connect_error);
          }
          $weatherForecastModel = new ApiTokenModel();
-         $sql = 'SELECT usage_count FROM auth WHERE token =' . "'$token'";
+         $sql = 'SELECT usage_count FROM weatherforecastdetails WHERE token =' . "'$token'";
          $result = ($conn->query($sql));
          if ($result->num_rows > 0) {
              $row = $result->fetch_assoc();
@@ -44,7 +44,7 @@ class ForecastDataLayer
          $weatherForecastModel->tokenValue = $tokenValue;
          $weatherForecastModel->usageCount = $this->getUsageCount($tokenValue)->usageCount + 1;
 
-         $sql = 'UPDATE auth SET usage_count=' .$weatherForecastModel->usageCount . ", last_used =" . "'$weatherForecastModel->lastUsedOn'" . ' WHERE token =' . "'$weatherForecastModel->tokenValue'";
+         $sql = 'UPDATE weatherforecastdetails SET usage_count=' .$weatherForecastModel->usageCount . ", last_used =" . "'$weatherForecastModel->lastUsedOn'" . ' WHERE token =' . "'$weatherForecastModel->tokenValue'";
          $conn->query($sql);
          $conn->close();
          }
@@ -61,7 +61,7 @@ class ForecastDataLayer
              if ($conn->connect_error) {
                  die("Connection failed: " . $conn->connect_error);
              }
-             $sql = 'SELECT token FROM auth WHERE token=' . "'$token'";
+             $sql = 'SELECT token FROM weatherforecastdetails WHERE token=' . "'$token'";
              $result = ($conn->query($sql));
              if ($result->num_rows > 0) {
                  $row = $result->fetch_assoc();

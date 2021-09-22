@@ -9,7 +9,7 @@ if (!defined('PASSWORD')) {
     define('PASSWORD','');
 }
 if (!defined('DB')) {
-    define('DB','apitoken');
+    define('DB','weatherforecastapidb');
 }
 
 
