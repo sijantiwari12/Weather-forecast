@@ -1,6 +1,5 @@
 <?php
 namespace App\Controller;
-use App\DataLayer\ForecastDataLayer;
 use App\ForecastServiceWeather\ForecastService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,12 +27,10 @@ class ForecastController extends AbstractController
             $response->setStatusCode(Response::HTTP_UNAUTHORIZED);
             return $response;
         } else {
-            $forecastData = new ForecastDataLayer();
             $weatherInfo = $foreCastService->weatherInfo();
             if ($weatherInfo['status_code'] == 200) {
-                $token = $incomingToken;
-                $forecastData->updateUserCount($token);
-                $weatherForecastModel = $forecastData->getUsageCount($incomingToken);
+                $foreCastService->updateUserCount($incomingToken);
+                $weatherForecastModel = $foreCastService->getUsageCount($incomingToken);
                 $usageCount = $weatherForecastModel->usageCount;
                 $data = [
                     'usageCount' => $usageCount,

@@ -2,6 +2,7 @@
 namespace App\ForecastServiceWeather;
 
 use App\DataLayer\ForecastDataLayer;
+use App\Model\ApiTokenModel;
 use Symfony\Component\HttpFoundation\Response;
 class ForecastService {
     /** Consume the api_weather API and return the data to forecast route on ForecastController
@@ -51,6 +52,15 @@ class ForecastService {
         } else {
             return false;
         }
+    }
+    public function updateUserCount(string $tokenValue) {
+        $dataLayer = new ForecastDataLayer();
+        $dataLayer->updateUserCount($tokenValue);
+    }
+
+    public function getUsageCount(string $tokenValue) :ApiTokenModel {
+        $dataLayer = new ForecastDataLayer();
+        return $dataLayer->getUsageCount($tokenValue);
     }
 }
 
