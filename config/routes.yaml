@@ -1,0 +1,8 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+forecast:
+  path: api/weather/office/forecast
+  controller: App\Controller\ForecastController::forecast
+  methods: GET|HEAD
