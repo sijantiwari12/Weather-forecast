@@ -30,4 +30,3 @@ Steps to execute the program:
     I used Symfony framework and utilized the framework as a base for my code. I haven't used any ORM but used manual  php to connect to mysql database .
     Used Xampp
     Started local server using: symfony server:start
-
