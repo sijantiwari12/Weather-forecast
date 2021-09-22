@@ -2,7 +2,7 @@
 #Weather Forecast API 
 Steps to execute the program:
 1.Execute the attached Script named weatherforecastdetails.sql in MYSQL environment.
-2.Run the application.
+2.Update Composer and install library mentioned in composer.json file and run the application.
 3. Use PostMan or any api testing tool of your choice.
 4. Hit the URL at  https://127.0.0.1:8000/api/weather/office/forecast  with HTTPGET method and pass a token named Api-Token.
 5. If the token has a valid value then it should return the Json response.Otherwise it will return 401 Authentication Failed Message.
